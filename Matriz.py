@@ -8,6 +8,7 @@ def gerar_matriz(diretorio, nome_famoso):
     sound_file = AudioSegment.from_wav(diretorio)
 
     #region ' Codigo Comentado '
+
     '''
     toMaximo = sound_file.max_possible_amplitude
     racao = sound_file.duration_seconds
@@ -26,6 +27,7 @@ def gerar_matriz(diretorio, nome_famoso):
     
     focus_size = int(0.15 * fs)
     '''
+
     #endregion
 
     audio_chunks = split_on_silence(sound_file, min_silence_len, silence_thresh)

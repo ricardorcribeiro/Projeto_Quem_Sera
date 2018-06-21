@@ -1,0 +1,6 @@
+numpy==1.14.3
+PyAudio==0.2.11
+pydub==0.22.0
+scikit-learn==0.19.1
+sklearn==0.0
+uuid==1.30
