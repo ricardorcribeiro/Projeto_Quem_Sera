@@ -36,16 +36,18 @@ def gerar_matriz(diretorio, nome_famoso):
 
     for i, chunk in enumerate(audio_chunks):
         linha = []
+        linha_pai = []
 
         pontoMaximo = chunk.max_possible_amplitude
         mediaFrame = chunk.frame_rate
         amplitude = chunk.max
         mediaItencidade = chunk.rms
 
-        linha.append(nome_famoso)
+        linha_pai.append(nome_famoso)
         linha.append(pontoMaximo)
         linha.append(mediaFrame)
         linha.append(amplitude)
         linha.append(mediaItencidade)
-        matriz.append(linha)
+        linha_pai.append(linha)
+        matriz.append(linha_pai)
     return matriz
