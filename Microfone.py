@@ -1,6 +1,7 @@
 import pyaudio
 import wave
 import uuid
+
 def audio_usuario():
     FORMAT = pyaudio.paInt16
     CHANNELS = 2
