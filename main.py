@@ -1,6 +1,7 @@
 import Matriz
 import Microfone
 import os
+import numpy as np
 from sklearn import svm
 
 audios = os.listdir("audio_famosos")
@@ -15,8 +16,8 @@ for i in audios:
     for iten in Itens:
         listaPessoas.append(iten[0])
         matrizTreino.append(iten[1])
-    #matriz.append(Matriz.gerar_matriz("audio_famosos/" + i, nome_famoso))
-
+matrizTreino = np.asarray(matrizTreino)
+matrizTreino.reshape(1,-1)
 print("Pronto!")
 input("BEM VINDO(A)!\nPara começar aperte qualquer tecla e seu áudio será gravado.")
 user_answer = 'y'
@@ -33,10 +34,11 @@ while user_answer == 'y':
     clf = svm.SVC()
     clf.fit(matrizTreino, listaPessoas)
 
-    result = clf.predict(matrizUsuario[0][1])
+    result = clf.predict([matrizUsuario[0][1]])
     print("E o resultado foi...")
     print(result, "!!!")
-    user_answer = str(input("Deseja imitar de novo? (digite 'y' para sim)")).lower
+    user_answer = input("Deseja imitar de novo? (digite 'y' para sim)").lower
+    print(user_answer)
 
 print("OK! Foi divertido jogar com você! Até a próxima!")
 input("Fim do programa, aprte qualquer tecla para finalizar.")
