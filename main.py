@@ -37,7 +37,7 @@ while user_answer == 'y':
     result = clf.predict([matrizUsuario[0][1]])
     print("E o resultado foi...")
     print(result, "!!!")
-    user_answer = input("Deseja imitar de novo? (digite 'y' para sim)").lower
+    user_answer = str.lower(input("Deseja imitar de novo? (digite 'y' para sim)"))
     print(user_answer)
 
 print("OK! Foi divertido jogar com você! Até a próxima!")
