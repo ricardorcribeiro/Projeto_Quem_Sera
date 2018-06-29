@@ -26,15 +26,19 @@ while user_answer == 'y':
     print("GRAVANDOOOO! Imite alguma celebridade, rápido!")
     audioUsuario = Microfone.audio_usuario()
     print("OK, vou adivinhar quem você imitou agora...")
-    matrizUsuario = Matriz.gerar_matriz(audioUsuario, "Usuario")
+    matrizUsuario = Matriz.gerar_matriz(audioUsuario, "Usuario", 50)
 
-    #print(listaPessoas)
-    #print(matrizTreino)
+    print(listaPessoas)
+    print(matrizTreino)
 
     clf = svm.SVC()
     clf.fit(matrizTreino, listaPessoas)
 
-    result = clf.predict([matrizUsuario[0][1]])
+    result = []
+    for chunks in matrizUsuario:
+        result.append(chunks[1])
+
+    result = clf.predict(result)
     print("E o resultado foi...")
     print(result, "!!!")
     user_answer = str.lower(input("Deseja imitar de novo? (digite 'y' para sim)"))
