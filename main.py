@@ -50,6 +50,7 @@ while user_answer == 'y':
     print("E o resultado foi...")
     print(result + "!!!")
     video_famoso(result)
+    print("Aperte 'Q' para parar o video")
     user_answer = str.lower(input("Deseja imitar de novo? (digite 'y' para sim)"))
 
 print("OK! Foi divertido jogar com você! Até a próxima!")
