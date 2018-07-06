@@ -4,7 +4,7 @@ import os
 import numpy as np
 from sklearn import svm
 from collections import Counter
-#from Video import video_famoso
+from Video import video_famoso
 
 audios = os.listdir("audio_famosos")
 matriz =[]
@@ -40,14 +40,17 @@ while user_answer == 'y':
     for chunks in matrizUsuario:
         result.append(chunks[1])
 
+    if(len(result) <= 0):
+        input("Não consegui te entender... Vamos tentar de novo! (aperte qualquer tecla para continuar)")
+        continue
+
     result = clf.predict(result)
     result = Counter(result)
-    result = result.most_common(1)
+    result = result.most_common(1)[0][0]
     print("E o resultado foi...")
-    print(result, "!!!")
-    #video_famoso(result)
+    print(result + "!!!")
+    video_famoso(result)
     user_answer = str.lower(input("Deseja imitar de novo? (digite 'y' para sim)"))
-    #print(user_answer)
 
 print("OK! Foi divertido jogar com você! Até a próxima!")
 input("Fim do programa, aperte qualquer tecla para finalizar.")
