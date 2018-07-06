@@ -3,6 +3,8 @@ import Microfone
 import os
 import numpy as np
 from sklearn import svm
+from collections import Counter
+#from Video import video_famoso
 
 audios = os.listdir("audio_famosos")
 matriz =[]
@@ -28,8 +30,8 @@ while user_answer == 'y':
     print("OK, vou adivinhar quem você imitou agora...")
     matrizUsuario = Matriz.gerar_matriz(audioUsuario, "Usuario", 50)
 
-    print(listaPessoas)
-    print(matrizTreino)
+    #print(listaPessoas)
+    #print(matrizTreino)
 
     clf = svm.SVC()
     clf.fit(matrizTreino, listaPessoas)
@@ -39,10 +41,13 @@ while user_answer == 'y':
         result.append(chunks[1])
 
     result = clf.predict(result)
+    result = Counter(result)
+    result = result.most_common(1)
     print("E o resultado foi...")
     print(result, "!!!")
+    #video_famoso(result)
     user_answer = str.lower(input("Deseja imitar de novo? (digite 'y' para sim)"))
-    print(user_answer)
+    #print(user_answer)
 
 print("OK! Foi divertido jogar com você! Até a próxima!")
-input("Fim do programa, aprte qualquer tecla para finalizar.")
+input("Fim do programa, aperte qualquer tecla para finalizar.")
